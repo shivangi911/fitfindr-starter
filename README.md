@@ -274,42 +274,19 @@ One implementation difference from the original specification was the addition o
 
 # AI Usage
 
-## Instance 1 – Tool Implementation
+## Instance 1 – Tool Development
 
-I used ChatGPT to implement `search_listings()` using the tool specification defined in `planning.md`.
+I used ChatGPT to brainstorm approaches for implementing the required tools after completing the tool specifications in planning.md. I provided the tool requirements, expected inputs and outputs, and failure cases. The generated suggestions helped me think through filtering logic, prompt design, and fallback behavior.
 
-Inputs provided:
-
-* Tool purpose
-* Input parameters
-* Expected return value
-* Failure mode
-
-Before using the generated code, I verified that:
-
-* Filtering worked for description, size, and price
-* Results were sorted by relevance
-* Empty searches returned an empty list rather than raising exceptions
+Before using any code, I reviewed it against my specifications, tested it with multiple inputs, and modified portions of the implementation to ensure it matched the project requirements and handled failure cases correctly.
 
 ---
 
-## Instance 2 – Planning Loop
+## Instance 2 – Planning Loop and Debugging
 
-I used ChatGPT to help implement the planning loop in `agent.py`.
+I used ChatGPT to discuss the planning loop design and state flow between tools. I shared my architecture diagram and planning loop description and used the feedback to verify that information from one tool could be stored and reused by later tools.
 
-Inputs provided:
-
-* Planning Loop section from `planning.md`
-* State Management section
-* Architecture diagram
-
-Before using the generated code, I verified that:
-
-* The agent branches when no search results are found
-* State is stored in the session dictionary
-* The selected item is passed into `suggest_outfit`
-* The outfit suggestion is passed into `create_fit_card`
-* The agent does not call all tools unconditionally
+During development, I also used ChatGPT to help troubleshoot issues related to Python environments, imports, testing, and Groq API integration. All generated suggestions were reviewed, tested, and adjusted before being incorporated into the final project.
 
 ---
 
