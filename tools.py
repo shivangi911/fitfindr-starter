@@ -38,6 +38,7 @@ def _get_groq_client():
 def _call_groq(prompt: str, temperature: float = 0.7) -> str:
     """Call Groq and return the model response text."""
     client = _get_groq_client()
+    print("Calling Groq...")
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
@@ -191,7 +192,9 @@ Suggest 1-2 complete outfit combinations using the new item and specific wardrob
 
     try:
         return _call_groq(prompt, temperature=0.7)
-    except Exception:
+    except Exception as e:
+        print(f"Error occurred while calling Groq: {e}")
+
         title = new_item.get("title", "this thrifted piece")
         colors = ", ".join(map(str, new_item.get("colors", []) or []))
         color_text = f" in {colors}" if colors else ""
@@ -246,7 +249,8 @@ Requirements:
 
     try:
         return _call_groq(prompt, temperature=0.95)
-    except Exception:
+    except Exception as e:
+        print(f"Error occurred while calling Groq: {e}")
         return (
             f"Found {title} on {platform} for ${price} and it completely pulls the outfit together. "
             f"{outfit} Thrifted, styled, and definitely getting repeated."
